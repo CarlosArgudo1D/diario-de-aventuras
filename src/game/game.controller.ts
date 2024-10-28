@@ -26,9 +26,10 @@ export class GameController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateGameDto: UpdateGameDto) {
-    return this.gameService.update(+id, updateGameDto);
-  }
+update(@Param('id') id: string, @Body() updateGameDto: UpdateGameDto) {
+  return this.gameService.update(+id, updateGameDto);
+}
+
 
   @Delete(':id')
   remove(@Param('id') id: string) {
