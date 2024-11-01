@@ -1,18 +1,21 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString, IsNumber } from 'class-validator';
 
 export class CreateGameDto {
     @ApiProperty()
-    title: string;
-  
-    @ApiProperty({ required: false })
-    genre: string;
-  
+    @IsString()
+    name: string;
+
     @ApiProperty()
+    @IsString()
+    genre: string;
+
+    @ApiProperty()
+    @IsString()
     platform: string;
-  
-    @ApiProperty({ default: new Date() })
-    createdAt?: Date;
-  
-    @ApiProperty({ default: new Date() })
-    updatedAt?: Date;
-  }
+
+    @ApiProperty()
+    @IsNumber()
+    rating: number;
+}
+

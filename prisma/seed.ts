@@ -3,36 +3,52 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  // Crear un juego
+
   const post1 = await prisma.game.create({
     data: {
-      title: "The Legend of Zelda: Breath of the Wild", // Nombre del juego
-      genre: "Action-Adventure", // Género del juego
-      platform: "Nintendo Switch", // Plataforma
+      name: "The Legend of Zelda: Breath of the Wild", 
+      genre: "Action-Adventure", 
+      platform: "Nintendo Switch", 
+      rating: 4.9
     },
   });
 
-  // Imprimir el juego creado en la consola
-  console.log("Juego creado:", post1);
-
-  // Si quieres crear más juegos, puedes seguir el mismo proceso
   const post2 = await prisma.game.create({
     data: {
-      title: "God of War",
+      name: "God of War",
       genre: "Action-Adventure",
       platform: "PlayStation 4",
+      rating: 4.8
     },
   });
 
-  console.log("Juego creado:", post2);
+  const post3 = await prisma.game.create({
+    data: {
+      name: "Minecraft",
+      genre: "Sandbox",
+      platform: "Multiplataforma",
+      rating: 4.7
+    },
+  });
 
-  // También puedes hacer lo mismo con más juegos si lo deseas
+  const post4 = await prisma.game.create({
+    data: {
+      name: "Super Mario Bros",
+      genre: "Action-Adventure",
+      platform: "Nintendo (NES) ",
+      rating: 5.4
+    },
+  });
+
+  console.log(post1, post2, post3, post4);
 }
 
 main()
-  .catch((e) => {
-    throw e;
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+.catch((e) => {
+    console.error(e);
+    process.exit(1);
+})
+
+.finally(async () => {
+    await prisma.$disconnect;
+});

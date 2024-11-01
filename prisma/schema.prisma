@@ -15,9 +15,10 @@ datasource db {
 
 model Game {
   id        Int      @id @default(autoincrement())
-  title     String
+  name     String
   genre     String
   platform  String
+  rating    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
